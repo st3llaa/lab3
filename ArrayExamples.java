@@ -25,11 +25,13 @@ public class ArrayExamples {
   // lowest number when calculating. Returns 0 if there are no elements or just
   // 1 element in the array
   static double averageWithoutLowest(double[] arr) {
-    if(arr.length < 2) { return 0.0; }
     double lowest = arr[0];
-    for(double num: arr) {
+    double max = -9999; //including max for edge case
+    for(double num: arr) { 
       if(num < lowest) { lowest = num; }
+      if(num > max){ max = num;} //finding max
     }
+    if(arr.length < 2) { return max; } //edge case two items in list
     double sum = 0;
     for(double num: arr) {
       if(num != lowest) { sum += num; }
